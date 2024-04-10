@@ -6,7 +6,7 @@ import requests
 app = Flask(__name__)
 
 client = pymongo.MongoClient(
-    "mongodb+srv://mongoadmin:passwordone@cluster0.dgvwz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+    "mongodb+srv://#####:########@cluster0.dgvwz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 
 hf_token = "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"
 embedding_url = "https://api-inference.huggingface.co/pipeline/feature-extraction/sentence-transformers/all-MiniLM-L6-v2"
