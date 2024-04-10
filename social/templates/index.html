@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f2ef; /* LinkedIn background color */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .profile-details {
+            display: flex;
+            align-items: flex-start;
+            width: 60%;
+            background-color: #ffffff; /* White background */
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Box shadow */
+            padding: 20px;
+            margin-right: 20px;
+        }
+        .profile-image {
+            width: 120px; /* Adjust image width as needed */
+            height: 120px; /* Adjust image height as needed */
+            border-radius: 50%; /* Make image circular */
+            margin-right: 20px; /* Add margin to separate image from text */
+        }
+        .profile-card {
+            flex-grow: 1;
+        }
+        .similar-profiles {
+            width: 40%;
+            background-color: #ffffff; /* White background */
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Box shadow */
+            padding: 20px;
+        }
+        .profile-card h2 {
+            font-size: 24px;
+            margin-top: 0;
+        }
+        .profile-card p {
+            margin-top: 8px;
+            color: #666666; /* Dark gray text */
+        }
+        .similar-profiles h2 {
+            font-size: 20px;
+            margin-top: 0;
+        }
+        .similar-profiles .profile-card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- User Profile Details -->
+        <div class="profile-details">
+            <img src="{{ url_for('static', filename='profile_pic.png') }}" alt="Profile Picture" class="profile-image">
+            <div class="profile-card">
+                <h2>{{ user_profile.username }}</h2>
+                <p>Age: {{ user_profile.age }}</p>
+                <p>Date of Birth: {{ user_profile.dob }}</p>
+                <p>Gender: {{ user_profile.gender }}</p>
+                <p>City: {{ user_profile.location.city }}</p>
+                <p>Country: {{ user_profile.location.country }}</p>
+                <p>Interests: {{ ', '.join(user_profile.interests) }}</p>
+            </div>
+        </div>
+        <!-- Similar Profiles -->
+        <div class="similar-profiles">
+            <h2>Similar Profiles</h2>
+            {% for profile in similar_profiles %}
+            <div class="profile-card">
+                <h3>{{ profile.name }}</h3>
+                <p>Gender: {{ profile.Gender }}</p>
+                <p>Interests: {{ profile.Interests }}</p>
+                <p>location: {{ profile.City }}, {{ profile.Country }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
